@@ -1,0 +1,82 @@
+---
+
+- hosts: R1
+  gather_facts: False
+
+  vars:
+    _token: uuNuCx-5umCQ4pfBRmgRL2ZDTUb3SlQQohfjBxtR
+    _url: http://192.168.1.213/api/
+    _light_id: 9
+    _data_red: '{"on":True, "sat":254, "bri":254,"hue":5000,"ct": 500, "xy": [0.6792,0.3038]}'
+    _data_green: '{"on":True, "sat":254, "bri":254,"hue":5000,"ct": 500, "xy": [0.2688, 0.6171]}'
+    _data_off: '{"on":False}'
+
+
+  tasks:
+  - name: Read in parse_genie role
+    include_role:
+      name: clay584.parse_genie
+
+  - name: Turn Lights Off
+    uri:
+      url: "{{_url }}{{ _token }}/lights/{{ _light_id }}/state"
+      method: PUT
+      body: "{{ _data_off }}"
+      body_format: json
+      headers: 
+        Accept: application/json 
+      return_content: 'True'
+      validate_certs: no
+      force_basic_auth: no
+      follow_redirects: 'True'
+
+  - name: Run show interfaces command
+    ios_command:
+      commands: show ip route
+    register: interfaces
+
+  - name: Print Structured Data
+    debug:
+      msg: "{{ interfaces['stdout'][0] | parse_genie(command='show ip route', os='iosxe') }}"
+    delegate_to: localhost
+    register: _output
+
+  - set_fact:
+      _routes: "{{ _output.msg|json_query('vrf.default.address_family.ipv4.routes.keys(@)') }}"
+
+  - debug:
+      var: _routes
+
+  - set_fact:
+      _routecheck: "{{ _routes | length }}"
+
+  - debug:
+      var: _routecheck
+
+  - name: Turn Green Light On
+    uri:
+      url: "{{_url }}{{ _token }}/lights/{{ _light_id }}/state"
+      method: PUT
+      body: "{{ _data_green }}"
+      body_format: json
+      headers: 
+        Accept: application/json 
+      return_content: 'True'
+      validate_certs: no
+      force_basic_auth: no
+      follow_redirects: 'True'
+    when: _routecheck == '6'
+
+  - name: Turn Red Light On
+    uri:
+      url: "{{_url }}{{ _token }}/lights/{{ _light_id }}/state"
+      method: PUT
+      body: "{{ _data_red }}"
+      body_format: json
+      headers: 
+        Accept: application/json 
+      return_content: 'True'
+      validate_certs: no
+      force_basic_auth: no
+      follow_redirects: 'True'
+    when: _routecheck != '6'
