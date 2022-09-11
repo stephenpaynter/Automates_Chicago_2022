@@ -1,0 +1,29 @@
+---
+
+- hosts: localhost
+  gather_facts: False
+
+  vars:
+    _token: uuNuCx-5umCQ4pfBRmgRL2ZDTUb3SlQQohfjBxtR
+    _url: http://192.168.1.213/api/
+    _light_id: 9
+    _data_green: '{"on":True, "sat":254, "bri":254,"hue":5000,"ct": 500, "xy": [0.2688, 0.6171]}'
+ 
+  tasks:
+
+  - name: Turn Green Light On
+    uri:
+      url: "{{_url }}{{ _token }}/lights/{{ _light_id }}"
+      method: PUT
+      body: "{{ _data_green }}"
+      body_fromat: json
+      headers: 
+        Accept: application/json 
+      return_content: 'True'
+      validate_certs: no
+      force_basic_auth: no
+      follow_redirects: 'True'
+      register: _light_data
+
+  - debug:
+      var: _light_data 
