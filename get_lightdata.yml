@@ -15,7 +15,7 @@
       url: "{{_url }}{{ _token }}/lights/{{ _light_id }}"
       method: GET
       headers: 
-      Accept: application/json 
+        Accept: application/json 
       return_content: 'True'
       validate_certs: no
       force_basic_auth: no
