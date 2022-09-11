@@ -1,0 +1,26 @@
+---
+
+- hosts: localhost
+  gather_facts: False
+
+  vars:
+    _token: uuNuCx-5umCQ4pfBRmgRL2ZDTUb3SlQQohfjBxtR
+    _url: http://192.168.1.213/api/
+    _light_id: 9
+ 
+  tasks:
+
+  - name: Get Details and Settings for Light ID 9
+    uri:
+      url: "{{_url }}{{ _token }}/lights/{{ _light_id }}"
+      method: GET
+      headers: 
+      Accept: application/json 
+      return_content: 'True'
+      validate_certs: no
+      force_basic_auth: no
+      follow_redirects: 'True'
+      register: _light_data
+
+  - debug:
+      var: _light_data 
