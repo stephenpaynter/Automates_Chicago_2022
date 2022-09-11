@@ -1,0 +1,32 @@
+---
+
+- hosts: R1
+  gather_facts: False
+
+  tasks:
+  - name: Read in parse_genie role
+    include_role:
+      name: clay584.parse_genie
+
+  - name: Run show interfaces command
+    ios_command:
+      commands: show ip route
+    register: interfaces
+
+  - name: Print Structured Data
+    debug:
+      msg: "{{ interfaces['stdout'][0] | parse_genie(command='show ip route', os='iosxe') }}"
+    delegate_to: localhost
+    register: _output
+
+  - set_fact:
+      _routes: "{{ _output.msg|json_query('vrf.default.address_family.ipv4.routes.keys(@)') }}"
+      
+  - debug:
+      var: _routes
+
+  - set_fact:
+      _routecheck: "{{ _routes | length }}"
+      
+  - debug:
+      var: _routecheck
