@@ -16,7 +16,8 @@ Hopefully this session will be a bit of fun and a little outside the box, the AP
 
 ![title-slide](_images/automates_2.jpg)
 
-Who am I? My name is Stephen Paynter. I’m based in the North East of England and have been a network engineer for over 25 years, predominantly working as an IT contractor in both private and public sectors.  I’m a Cisco CCIE and full time automation engineer.  I am presently automating at scale with AAP,  Ansible core and Python.   
+Who am I? My name is Stephen Paynter. I’m based in the North East of England and have been a network engineer for over 25 years, predominantly working as an IT contractor in both private and public sectors.  I’m a Cisco CCIE and full time automation engineer.  I am presently automating at scale with AAP,  Ansible core and Python.  
+  
 I’m on most social media platforms so if you have any questions or feedback from todays session then hit me up and I’d be happy to help.  All the code from this session is also available In my Github.  
 
 ![title-slide](_images/automates_3.jpg)
@@ -57,3 +58,13 @@ pyATS is the acronym for the Python Automation Test System, it’s a framework d
 Genie is effectively the pyATS SDK and contains all the tools needed for Network Test Automation. Genie simplifies network automation and allows scripting and interaction with devices whilst avoiding functional programming. Genie has a huge library, but for the purpose of this presentation we will only be looking at the Genie Parser Library.  
 
 ![title-slide](_images/automates_9.jpg)
+
+My home lab environment is built using CML, or cisco modelling labs and simulates network equipment on a Virtual Machine. This lets me quickly and easily create and modify network scenario’s using Cisco and non-cisco equipment, using real images.  
+
+![title-slide](_images/automates_10.jpg)
+
+As I mentioned before I want to get Ansible to check for a specific number of routes in a device’s routing table. I’m going to use R1 in my lab for this, its a Cisco IOSv router.  
+
+Logging into router 1 I can see that there are a total of 6 subnets in the routing table, 4 of which are connected routes and 2 lof which are local routes. 2 of the connected routes are from loopbacks so they are perfect to use for testing functionality later.  Ideally I only want to know the number routes in the routes table. My home lab doesn’t really change so I don’t need to know the specific subnets.
+
+![title-slide](_images/automates_11.jpg)
