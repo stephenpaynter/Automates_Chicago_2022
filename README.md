@@ -18,3 +18,15 @@ Hopefully this session will be a bit of fun and a little outside the box, the AP
 
 Who am I? My name is Stephen Paynter. I’m based in the North East of England and have been a network engineer for over 25 years, predominantly working as an IT contractor in both private and public sectors.  I’m a Cisco CCIE and full time automation engineer.  I am presently automating at scale with AAP,  Ansible core and Python.   
 I’m on most social media platforms so if you have any questions or feedback from todays session then hit me up and I’d be happy to help.  All the code from this session is also available In my Github.
+
+![title-slide](_images/automates_3.jpg)
+
+2020, what happened, a lot yeah. At least everyone knew where Wuhan was on a map by the end of March.
+
+![title-slide](_images/automates_4.jpg)
+
+For me personally what happened was I couldn’t do the hobbies I enjoyed. The UK like everywhere else mandated people stay at home. That meant no Surfing, wakeboarding,  Snowboarding or Mountain biking, Personally, that was giving up a lot. Being active and busy for me is like a fountain of youth, and im not really a happy bunny if I can’t do get my fix at least once or twice a week. A brief 30 minute walk during my lunch hour was the only thing keeping me marginally entertained. This wasn’t sustainable, I needed something to fill my personal time and keep me sane during lockdown. Luckily Cisco had just released their Devnet certification track. This seemed a perfect solution, I was already automating in my current role and this would only make me a better engineer and expose me to new technologies and products. So after a month of indecision I decided to pursue it,  but I wanted to make the process as fun as possible. I find the older I get the more I struggle to learn. I needed a way to stay engaged and motivated whilst ensuring I understood what I needed to learn. 
+
+![title-slide](_images/automates_5.jpg)
+
+APIs are everywhere. There are so many public facing APIss available on the internet that anyone can interact with. 
