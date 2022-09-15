@@ -68,3 +68,54 @@ As I mentioned before I want to get Ansible to check for a specific number of ro
 Logging into router 1 I can see that there are a total of 6 subnets in the routing table, 4 of which are connected routes and 2 lof which are local routes. 2 of the connected routes are from loopbacks so they are perfect to use for testing functionality later.  Ideally I only want to know the number routes in the routes table. My home lab doesn’t really change so I don’t need to know the specific subnets.
 
 ![title-slide](_images/automates_11.jpg)
+
+Ok lets start looking at the code and break it down into manageable chunks.  
+  
+This is the Ansible code I’m using to run basic route validation on the Cisco device. I read in the Pyats/genie role, capture the output of the show ip route command and parse it out to structured data. From here I use a json query to filter only the keys, which are the 6 subnets in the route table. Once I have the subnets In a list I simply count them. I’ve added some extra debugs in the code so that you can see the output whilst the code runs.  
+
+![title-slide](_images/automates_12.jpg)
+
+So now we’ve tackled how to check our device to see how many subnets are in the routing table lets focus on the lights. I need to the grab token from Hue Bridge. The bridge is the brains of the smart lighting system and allows you to connect and control lights and accessories via the Hue App.  Its easy to find the IP address of the bridge as its displayed within the hue app under settings. This is the code I use to grab the token. It’s taken straight from the Hue SDK. Make sure that you press the button on the bridge before you run the code. This generates and sends a new token out, The token doesn’t change unless the bridge is power cycled, then you’d need to run through this process again to get another token.  
+
+![title-slide](_images/automates_13.jpg)
+
+Now to decipher and connect to the HUE API to start configuring the lighting. I want to set the lights to be green and red. The simplest solution is to manually turn the lights on to green or red and gather the data the API presents whilst set to the desired state.  I can then use this data within the code.  
+  
+Here’s the Playbook I’m using to gather the data. Light ID number 9 is a multiple coloured LED strip light. I’ve variablelised the URL and token, and issue a simple GET request and display the output.   
+ 
+![title-slide](_images/automates_14.jpg)
+
+The JSON response  produces all the parameters we need under the state key, this is what we’ll use to create our variable structure.  
+
+Once the playbook has ran I’ve now successfully gathered the correct parameters, I can now pass these within the payload of the API call to turn the lights on and to change them to a specific colour. In this example the data says the colour of the lights to green. So now, all I have to do is gather the data for a red light in the same fashion.  
+
+![title-slide](_images/automates_15.jpg)
+
+Once I’ve gathered the data I can build those out into my playbook. The responses to my GET requests allow me to create the variables that I need for red and green lights. These can then be passed into the payloads of the API calls I need to make. Ive also created a variable called data_off to turn the lights off, as ideally I don’t want them to be on before I run the script each time.  
+
+![title-slide](_images/automates_16.jpg)
+
+Now we can build the API call using the Ansible URI module. The Hue API specifies we need to use the PUT method and all the calls will be exactly the same apart from the body of the http request. The body_format will convert our variable data structure into JSON, it will also automatically set the content-type head accordingly. In a larger use case we could create a single role for PUT. POST and GET requests and just feed variables into the body field to make the code fully reusable.  
+
+![title-slide](_images/automates_17.jpg)
+
+Now I can combine the code to create the test case playbook.  
+We have all the variables we need set up that were gathered using API calls.  
+We read in the parse Genie role.  
+And then ensure the lights are turned off.  
+Run through the standard route check process we outlined before.   
+And then set two Api calls one for Green and one for Red , the when statement will run the module accordingly based on the route check. One of them will be skipped dependant on the result of the route check being 6 or not 6.  
+
+Lets run the full test case, currently loopback 100 is open and there are 6 subnets in my route table. The lights should turn green and the uri play to turn the lights red should be skipped.  
+Now lets close the loopback 100 interface and check that there are only 5 subnets in the route table of R1.  
+Run the code again, The play should turn the green lights off, as they are currently still on from the previous run, and then illuminate the lights red after skipping the green play.  
+
+What I’ve tried to do is highlight a mindset change, the way you think about network configuration and monitoring. I’m looking to extract facts from my network rather than simply looking at differences within the configuration. This is the starting part for automating network testing,  If you’re a network engineer think about changing your approach and mindset towards traditional everyday tasks.   
+
+Networking is lifelong learning, as technology improves and advances we are forced to learn new technologies in our careers. Automation is just another link in the chain.  
+
+So if you’re looking to delve into network automation where do you start? Part of adapting is accepting that automation will require an investment in time to learn new skills. This can be hard for businesses that are always fire fighting, however I’d argue that progress and differences can be made in less than an hour a day. Start small, automate daily repetitive tasks and get those quick wins. If a task is done more than once automate it. Gradually over time these quick wins add up, skills develop and you’ll be automating at scale. The aim is to reach a network source-of-truth. This will allow you to validate a network operational state without relying on its configuration. This is what I’ve shown you today in a very small way. I know If I know I should have 6 routes, I could add those into a hosts_var file and reference it from playbooks, granted I’d want much more detail in a production environment but its a simple example to highlight the benefits. Ansible is a great starting point too for network engineers with limited developer skills, its quick to setup, quick to learn and its human readable. Network automation isn’t going away its here to stay, make the jump before its too late. 
+
+![title-slide](_images/automates_18.jpg)
+ 
+ 
