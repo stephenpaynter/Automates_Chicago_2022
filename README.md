@@ -30,7 +30,7 @@ This wasn’t sustainable, I needed something to fill my personal time and keep 
 
 ![title-slide](_images/automates_5.jpg)
 
-APIs are everywhere. There are so many public facing APIss available on the internet that anyone can interact with. 
+APIs are everywhere. There are so many public facing APIs available on the internet that anyone can interact with. 
 
 ![title-slide](_images/automates_6.jpg)
 
@@ -47,5 +47,10 @@ pyATS and Genie libraries - available from the Cisco Devnet website.
 The Ansible Galaxy Cisco Genie Collection. - downloadable from galaxy.ansible.com. 
 And finally the Phillips Hue Software Developer kit. - available from the Philips developer website. 
 
+![title-slide](_images/automates_8.jpg)
 
+I keep mentioning pyATS, what is it?  
 
+pyATS is the acronym for the Python Automation Test System, it’s a framework developed by in house by Cisco. It’s been designed to provide end-to-end testing for developers to create automated test cases which simplify network testing. It is the de-facto test framework for internal Cisco engineers running millions of CI/CD, sanity, regression, scale, HA, solution tests on a monthly basis. Genie is effectively the pyATS SDK and contains all the tools needed for Network Test Automation. Genie simplifies network automation and allows scripting and interaction with devices whilst avoiding functional programming. Genie has a huge library, but for the purpose of this presentation we will only be looking at the Genie Parser Library.  
+
+![title-slide](_images/automates_9.jpg)
