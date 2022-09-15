@@ -25,8 +25,19 @@ I’m on most social media platforms so if you have any questions or feedback fr
 
 ![title-slide](_images/automates_4.jpg)
 
-For me personally what happened was I couldn’t do the hobbies I enjoyed. The UK like everywhere else mandated people stay at home. That meant no Surfing, wakeboarding,  Snowboarding or Mountain biking, Personally, that was giving up a lot. Being active and busy for me is like a fountain of youth, and im not really a happy bunny if I can’t do get my fix at least once or twice a week. A brief 30 minute walk during my lunch hour was the only thing keeping me marginally entertained. This wasn’t sustainable, I needed something to fill my personal time and keep me sane during lockdown. Luckily Cisco had just released their Devnet certification track. This seemed a perfect solution, I was already automating in my current role and this would only make me a better engineer and expose me to new technologies and products. So after a month of indecision I decided to pursue it,  but I wanted to make the process as fun as possible. I find the older I get the more I struggle to learn. I needed a way to stay engaged and motivated whilst ensuring I understood what I needed to learn. 
+For me personally what happened was I couldn’t do the hobbies I enjoyed. The UK like everywhere else mandated people stay at home. That meant no Surfing, wakeboarding,  Snowboarding or Mountain biking, Personally, that was giving up a lot. Being active and busy for me is like a fountain of youth, and im not really a happy bunny if I can’t do get my fix at least once or twice a week. A brief 30 minute walk during my lunch hour was the only thing keeping me marginally entertained.   
 
 ![title-slide](_images/automates_5.jpg)
 
+This wasn’t sustainable, I needed something to fill my personal time and keep me sane during lockdown. Luckily Cisco had just released their Devnet certification track. This seemed a perfect solution, I was already automating in my current role and this would only make me a better engineer and expose me to new technologies and products. So after a month of indecision I decided to pursue it,  but I wanted to make the process as fun as possible. I find the older I get the more I struggle to learn. I needed a way to stay engaged and motivated whilst ensuring I understood what I needed to learn. 
+
+![title-slide](_images/automates_6.jpg)
+
 APIs are everywhere. There are so many public facing APIss available on the internet that anyone can interact with. 
+
+![title-slide](_images/automates_7.jpg)
+
+Believe it or not there’s a Star Wars API, here’s the return response from a query made to the spaceship resource. You can also query planets, vehicles, people, films and species . NASA has an API that amongst other things will tell you how many people are currently in space or how many near earth objects are currently being tracked. Theres also API’s for football, beer, countries, dinosaurs, marvel comics, if you can think it, there’s probably an API out there for it. 
+
+
+
