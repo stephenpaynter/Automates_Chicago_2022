@@ -25,19 +25,27 @@ I’m on most social media platforms so if you have any questions or feedback fr
 
 ![title-slide](_images/automates_4.jpg)
 
-For me personally what happened was I couldn’t do the hobbies I enjoyed. The UK like everywhere else mandated people stay at home. That meant no Surfing, wakeboarding,  Snowboarding or Mountain biking, Personally, that was giving up a lot. Being active and busy for me is like a fountain of youth, and im not really a happy bunny if I can’t do get my fix at least once or twice a week. A brief 30 minute walk during my lunch hour was the only thing keeping me marginally entertained.   
+For me personally what happened was I couldn’t do the hobbies I enjoyed. The UK like everywhere else mandated people stay at home. That meant no Surfing, wakeboarding,  Snowboarding or Mountain biking, Personally, that was giving up a lot. Being active and busy for me is like a fountain of youth, and im not really a happy bunny if I can’t do get my fix at least once or twice a week. A brief 30 minute walk during my lunch hour was the only thing keeping me marginally entertained.  
+This wasn’t sustainable, I needed something to fill my personal time and keep me sane during lockdown. Luckily Cisco had just released their Devnet certification track. This seemed a perfect solution, I was already automating in my current role and this would only make me a better engineer and expose me to new technologies and products. So after a month of indecision I decided to pursue it,  but I wanted to make the process as fun as possible. I find the older I get the more I struggle to learn. I needed a way to stay engaged and motivated whilst ensuring I understood what I needed to learn. 
 
 ![title-slide](_images/automates_5.jpg)
 
-This wasn’t sustainable, I needed something to fill my personal time and keep me sane during lockdown. Luckily Cisco had just released their Devnet certification track. This seemed a perfect solution, I was already automating in my current role and this would only make me a better engineer and expose me to new technologies and products. So after a month of indecision I decided to pursue it,  but I wanted to make the process as fun as possible. I find the older I get the more I struggle to learn. I needed a way to stay engaged and motivated whilst ensuring I understood what I needed to learn. 
+APIs are everywhere. There are so many public facing APIss available on the internet that anyone can interact with. 
 
 ![title-slide](_images/automates_6.jpg)
 
-APIs are everywhere. There are so many public facing APIss available on the internet that anyone can interact with. 
+Believe it or not there’s a Star Wars API, here’s the return response from a query made to the spaceship resource. You can also query planets, vehicles, people, films and species . NASA has an API that amongst other things will tell you how many people are currently in space or how many near earth objects are currently being tracked. Theres also API’s for football, beer, countries, dinosaurs, marvel comics, if you can think it, there’s probably an API out there for it. 
 
 ![title-slide](_images/automates_7.jpg)
 
-Believe it or not there’s a Star Wars API, here’s the return response from a query made to the spaceship resource. You can also query planets, vehicles, people, films and species . NASA has an API that amongst other things will tell you how many people are currently in space or how many near earth objects are currently being tracked. Theres also API’s for football, beer, countries, dinosaurs, marvel comics, if you can think it, there’s probably an API out there for it. 
+A lot of everyday devices also have API’s, pretty much everyone has access to an API in their home. Amazon Echo Dot, Google Chromecast, Nest smart Home, Apple HomeKit, Samsung smart things the list goes on and on.  If you pick a topic or product that interests you, then learning doesn’t seem as mundane or feel like its something you need to do.  
+I have a couple of Phillips Hue lights which have a REST API. This got me thinking, would it be possible to turn them on when a certain network state was detected. What would be even cooler, would be to turn them to a specific colour based on my needs. I needed to work out a use case. What if Ansible were to check for a  specific number of routes in a device’s routing table and If the number of routes was correct, get the Hue lights to turn green. If the routes were incorrect get them to turn red. By doing this I’d figure out how to parse the device route table and  learn a little about the Hue’s REST API with the Ansible URI module.  
+
+What needs to be installed?  
+Well obviously Ansible and Python. Im currently running Ansible 2.10.6 and Python 3.6.8. We’ll also need……. 
+pyATS and Genie libraries - available from the Cisco Devnet website. 
+The Ansible Galaxy Cisco Genie Collection. - downloadable from galaxy.ansible.com. 
+And finally the Phillips Hue Software Developer kit. - available from the Philips developer website. 
 
 
 
