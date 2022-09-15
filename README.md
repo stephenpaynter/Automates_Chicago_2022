@@ -1,4 +1,3 @@
-# Automates_Chicago_2022
-Playbooks used at Ansible Automates Chicago 2022
+# Having Fun with Network Validation using Pyats and Phillips Hue APIs
 
-Having Fun With Network Validation Using Pyats and Philips Hue API’s.
+![title-slide](_images/automates_1.jpg)
